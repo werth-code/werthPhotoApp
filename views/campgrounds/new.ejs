@@ -7,11 +7,12 @@
             
             <form action="/campgrounds" method="POST">
                 <div class="form-group">
+                    <p>Client Information</p>
                     <input class="form-control" type="text" placeholder="Client Name" name="name">
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Address" name="address">
+                    <textarea class="form-control" type="textarea" placeholder="Address" name="address"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -19,27 +20,47 @@
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Wedding Date" name="date">
+                    <input class="form-control" type="email" placeholder="E-Mail" name="email">
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Wedding Location" name="wedLocation">
+                    <p>Wedding Information</p>
+                    <input class="form-control" type="date" placeholder="Wedding Date" name="date">
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="image" name="image">
+                    <input class="form-control" type="text" placeholder="Wedding Venue" name="wedVenue">
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Package" name="package">
+                    <textarea class="form-control" type="text" placeholder="Venue Address" name="wedAddress"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Additions" name="additions">
+                        <p>Package Information</p>
+                        <select class="form-control" id="packageSelect" name="package">
+                            <option>Basic</option>
+                            <option>Full</option>
+                            <option>Complete</option>
+                            <option>Custom</option>
+                        </select>
                 </div>
 
                 <div class="form-group">
-                    <input class="form-control" type="number" placeholder="Package Price" name="price" min="0.01" step="0.01">
+                    <textarea class="form-control" type="text" placeholder="Additions" name="additions"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="number" placeholder="Total Package Price" name="price" min="0.01" step="0.01" max="25000">
+                </div>
+
+                <div class="form-group">
+                    <p>Contract</p>
+                    <input class="form-control" type="text" placeholder="Contract Link" name="wedContract">
+                </div>
+
+                <div class="form-group">
+                    <input class="form-control" type="text" placeholder="Image Link" name="image">
                 </div>
                         
                 <div class="form-group">

@@ -3,14 +3,21 @@ const mongoose = require("mongoose");
 
 const campgroundSchema = new mongoose.Schema({
     name: String,
-    date: String,
     address: String,
-    wedLocation: String,
     phone: String,
+    email: String,
+
+    date: String, 
+    wedVenue: String,
+    weddingAddress: String,
+
     package: String,
-    price: String,
-    image: String,
     additions: String,
+    price: String,
+    
+    contract: Buffer,
+    image: String,
+
     description: String,
     author: {
         id: {
@@ -24,7 +31,7 @@ const campgroundSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Comment"
         }
-    ]
+    ], 
 })
 
 //This is a pre hook to remove all comments on deletion of post

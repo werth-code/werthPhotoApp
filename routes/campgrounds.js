@@ -16,26 +16,57 @@ router.get("/", (req, res) => {
   });
 });
 
-//CREATE - add new camp to db
+//New Client
+
 router.post("/", middleware.isLoggedIn, (req, res) => {
-  let name = req.body.name; //this is the name of our first form
-  let image = req.body.image; //this is the name of our second form
-  let date  = req.body.date
-  let price = req.body.price
-  let phone = req.body.phone
-  let wedLocation = req.body.wedLocation
-  let package = req.body.package
+  //Client Info
+  let name = req.body.name
   let address = req.body.address
+  let phone = req.body.phone
+  let email = req.body.email
+
+  //Wedding Info
+  let date = req.body.date
+  let wedVenue = req.body.wedVenue
+  let weddingAddress = req.body.wedAddress
+
+  //Package Info
+  let package = req.body.package
   let additions = req.body.additions
-  let desc = req.body.description; // NOT ADDING DESC TO DATABASE!
+  let price = req.body.price
+  
+  //Upload Contract & Image
+  let contract = req.body.wedContract
+  let image = req.body.image
+
+  let desc = req.body.description
 
   let author = {
     id: req.user._id,
     username: req.user.username
   }
 
-  let newCampground = { name: name, date: date, address: address, wedLocation: wedLocation, phone: phone, package: package, image: image, price: price, additions: additions, description: desc, author: author};
-  
+  let newCampground = { 
+    name: name, 
+    address: address,
+    phone: phone,
+    email: email,
+
+    date: date, 
+    wedLocation: wedVenue,
+    weddingAddress: weddingAddress,
+
+    package: package, 
+    additions: additions,
+    price: price,
+
+    contract: contract,
+    image: image,   
+    
+    description: desc, 
+    author: author
+  };
+
 
   Campground.create(newCampground, (err, newlyCreated) => {
     if (err) console.log(err);
