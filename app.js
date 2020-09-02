@@ -18,7 +18,7 @@ const commentRoutes = require("./routes/comments"),
       indexRoutes = require("./routes/index")
       
 mongoose
-  .connect(process.env.MONGODB_URL, {
+  .connect("mongodb://localhost:27017/werthPhoto", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

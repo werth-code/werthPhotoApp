@@ -3,19 +3,23 @@
 <div class="container">
     <div class='row'>
         <div class="col-md-3">
-            <p class='lead'>Yelp Camp</p>
+            <p class='lead'><%= campground.name %></p>
             <div class='list-group'>
-                <li class='list-group-item active'>Info 1</li>
-                <li class='list-group-item'>Info 1</li>
-                <li class='list-group-item'>Info 1</li>
+                <li class='list-group-item active'><%= campground.date %></li>
+                <li class='list-group-item'><%= campground.address %></li>
+                <li class='list-group-item'><%= campground.phone %></li>
             </div>
         </div>
         <div class="col-md-9">
             <div class='thumbnail'>
                 <img class="img-responsive" src='<%= campground.image %>'>
                 <div class='caption-full'>
-                    <h4 class='pull-right'> $<%= campground.price %>/night</h4>
-                    <h4><a href=""><%= campground.name %></a></h4>
+                    <h4 class='pull-right'> $<%= campground.price %> / <%= campground.package %></h4>
+                    <h4 class="stack">
+                        <a href=""><%= campground.name %></a>
+                        <br>
+                        <a href=""><%= campground.wedLocation %></a>
+                    </h4>
                     <p><%= campground.description %></p>
                     <p><em>Post By: <%= campground.author.username %></em></p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
@@ -28,7 +32,7 @@
             </div>
             <div class='well'>
                 <div class='text-right'>
-                    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add Comment</a>
+                    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add Note</a>
                 </div>
                 <hr>
                 <% campground.comments.forEach( comment => { %>
