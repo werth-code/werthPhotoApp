@@ -1,5 +1,9 @@
-const express = require("express"),
+let express = require("express"),
   app = express(),
+  multer = require("multer"),
+  storage = multer.memoryStorage(), //!
+  upload = multer({ storage: storage, limits: { fields: 1, fileSize: 6000000, files: 1, parts: 2 } }), //!
+  photoRoute = express.Router(),
   bodyParser = require("body-parser"),
   mongoose = require("mongoose"),
   passport = require("passport"),
@@ -13,7 +17,7 @@ const express = require("express"),
   port = process.env.PORT || 80;
 
 
-const commentRoutes = require("./routes/comments"),
+let commentRoutes = require("./routes/comments"),
       campgroundRoutes = require("./routes/campgrounds"),
       indexRoutes = require("./routes/index")
       
@@ -26,13 +30,13 @@ mongoose
   .then(() => console.log("Connected to DB!"))
   .catch((error) => console.log(error.message));
 
-  
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"))
 app.use(flash())
+app.use("/photos", photoRoute) //
 
 // seedDB() //Seed The Database
 

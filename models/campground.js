@@ -6,6 +6,7 @@ const campgroundSchema = new mongoose.Schema({
     address: String,
     phone: String,
     email: String,
+    about: String,
 
     date: String, 
     wedVenue: String,
@@ -15,7 +16,7 @@ const campgroundSchema = new mongoose.Schema({
     additions: String,
     price: String,
     
-    contract: Buffer,
+    contract: String,
     image: String,
 
     description: String,

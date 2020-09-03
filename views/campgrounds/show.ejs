@@ -5,9 +5,23 @@
         <div class="col-md-3">
             <p class='lead'><%= campground.name %></p>
             <div class='list-group'>
-                <li class='list-group-item active'><%= campground.date %></li>
-                <li class='list-group-item'><%= campground.address %></li>
-                <li class='list-group-item'><%= campground.phone %></li>
+                <li class='list-group-item active'><span class="lead-small">Full Names<br></span><%= campground.name %></li>
+                <li class='list-group-item'><span class="lead-small">Address<br></span><%= campground.address %><br></li>
+                <li class='list-group-item'><span class="lead-small">Phone<br></span><%= campground.phone %><br></li>
+                <li class='list-group-item'><span class="lead-small">Email<br></span><%= campground.email %><br></li>
+            </div>
+
+            <p class='lead'>Wedding Details</p>
+            <div class='list-group'>
+                <li class='list-group-item'><span class="lead-small">Wedding Date<br></span><%= campground.date %></li>
+                <li class='list-group-item'><span class="lead-small">Wedding Address<br></span><%= campground.weddingAddress %></li>
+            </div>
+
+            <p class='lead'>Package Details</p>
+            <div class='list-group'>
+                <li class='list-group-item'><span class="lead-small">Package<br></span><%= campground.package %></li>
+                <li class='list-group-item'><span class="lead-small">Additions<br></span><%= campground.additions%></li>
+                <li class='list-group-item'><span class="lead-small">Price<br></span>$<%= campground.price %></li>
             </div>
         </div>
         <div class="col-md-9">
@@ -16,13 +30,15 @@
                 <div class='caption-full'>
                     <h4 class='pull-right'> $<%= campground.price %> / <%= campground.package %></h4>
                     <h4 class="stack">
-                        <a href=""><%= campground.name %></a>
                         <br>
-                        <a href=""><%= campground.wedLocation %></a>
+                        <a href=""><%= campground.wedVenue %></a>
                         <br>
-                        <a href="">View Contract: <%= campground.contract %></a>
+                        <a href="<%= campground.contract %>">View Contract <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-check-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zm1.354 4.354a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                        </svg></a>
                     </h4>
-                    <p><%= campground.description %></p>
+                    <p><%= campground.about %></p>
                     <p><em>Post By: <%= campground.author.username %></em></p>
                     <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
                         <a class="btn btn-xs btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
@@ -41,7 +57,7 @@
                     <div class='row'>
                         <div class='col-md-12'>
                             <strong><%= comment.author.username %></strong>
-                            <span class='pull-right'>10 Days Ago</span>
+                            <span class='pull-right'></span>
                             <p>
                                 <%= comment.text %>
                             </p>

@@ -17,3 +17,11 @@
 .stack {
     display: inline;
 }
+
+.lead {
+    font-weight: 400;
+}
+
+.lead-small {
+    font-weight: 500;
+}

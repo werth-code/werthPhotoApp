@@ -20,26 +20,27 @@ router.get("/", (req, res) => {
 
 router.post("/", middleware.isLoggedIn, (req, res) => {
   //Client Info
-  let name = req.body.name
-  let address = req.body.address
-  let phone = req.body.phone
-  let email = req.body.email
-
+  let name = req.body.name,
+  address = req.body.address,
+  phone = req.body.phone,
+  email = req.body.email,
+  about = req.body.about,
+  
   //Wedding Info
-  let date = req.body.date
-  let wedVenue = req.body.wedVenue
-  let weddingAddress = req.body.wedAddress
+  date = req.body.date,
+  wedVenue = req.body.wedVenue,
+  weddingAddress = req.body.wedAddress,
 
   //Package Info
-  let package = req.body.package
-  let additions = req.body.additions
-  let price = req.body.price
+  package = req.body.package,
+  additions = req.body.additions,
+  price = req.body.price,
   
   //Upload Contract & Image
-  let contract = req.body.wedContract
-  let image = req.body.image
+  contract = req.body.wedContract,
+  image = req.body.image,
 
-  let desc = req.body.description
+  desc = req.body.description
 
   let author = {
     id: req.user._id,
@@ -51,6 +52,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     address: address,
     phone: phone,
     email: email,
+    about: about,
 
     date: date, 
     wedLocation: wedVenue,
