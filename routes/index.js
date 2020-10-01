@@ -13,6 +13,16 @@ router.get("/register", (req, res) => {
   res.render("register");
 });
 
+// show register form
+router.get("/register", function (req, res) {
+  res.render("register", { page: 'register' });
+});
+
+//show login form
+router.get("/login", function (req, res) {
+  res.render("login", { page: 'login' });
+});
+
 //Sign In Logic
 router.post("/register", (req, res) => {
   const newUser = new User({ username: req.body.username });
