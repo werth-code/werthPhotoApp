@@ -99,6 +99,18 @@ router.get("/:id", (req, res) => {
     });
 });
 
+//INDEX - show all campgrounds
+router.get("/", function (req, res) {
+  // Get all campgrounds from DB
+  Campground.find({}, function (err, allCampgrounds) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("campgrounds/index", { campgrounds: allCampgrounds, page: 'campgrounds' });
+    }
+  });
+});
+
 //EDIT Camp Route
 router.get("/:id/edit", middleware.checkCampgroundOwnership, (req, res) => {
   Campground.findById(req.params.id, (err, foundCampground) => {

@@ -28,14 +28,15 @@ router.post("/register", (req, res) => {
   const newUser = new User({ username: req.body.username });
     User.register(newUser, req.body.password, (err, user) => {
       if (err) {
-        req.flash("error", err.message)
-        res.redirect("back");
-      } else {
+        if (err) {
+          console.log(err);
+          return res.render("register", { error: err.message });
+        }
+      }
       passport.authenticate("local")(req, res, () => {
         req.flash("success", "Welcome! " + user.username);
         res.redirect("/campgrounds");
       });
-    }
   });
 });
 
