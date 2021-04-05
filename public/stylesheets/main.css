@@ -29,3 +29,9 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 .lead-small {
     font-weight: 500;
 }
+
+/* Google Maps */
+#map {
+    height: 400px;
+    width: 100%;
+}

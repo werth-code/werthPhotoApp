@@ -5,27 +5,76 @@
         <h1 style="text-align: center;">Edit <%= campground.name %></h1>
         <div style="width: 30%; margin: 30px auto;">
 
-            <form action="/campgrounds/<%= campground._id %>?_method=PUT" method="POST">
-                <div class="form-group">
-                    <input class="form-control" type="text" value="<%= campground.name %>" name="campground[name]">
-                </div>
+                        <form action="/campgrounds" method="POST">
+                            <div class="form-group">
+                                <p>Client Information</p>
+                                <input class="form-control" type="text" value="<%= campground.name %>" placeholder="Names" name="name">
+                            </div>
+                        
+                            <div class="form-group">
+                                <textarea class="form-control" type="textarea" placeholder="<%= campground.address %>" name="address"></textarea>
+                            </div>
+                        
+                            <div class="form-group">
+                                <input class="form-control" type="text" value="<%= campground.phone %>" placeholder="Phone"name="phone">
+                            </div>
+                        
+                            <div class="form-group">
+                                <input class="form-control" type="email" value="<%= campground.email %>" placeholder="Email" name="email">
+                            </div>
+                        
+                            <div class="form-group">
+                                <p>Wedding Information</p>
+                                <input class="form-control" type="date" name="date">
+                            </div>
+                        
+                            <div class="form-group">
+                                <input class="form-control" type="text" value="<%= campground.wedVenue %>" placeholder="Wedding Venue" name="wedVenue">
+                            </div>
+                        
+                            <div class="form-group">
+                                <textarea class="form-control" type="text" value="<%= campground.weddingAddress %>" placeholder="Wedding Venue Address" name="wedAddress"></textarea>
+                            </div>
+                        
+                            <div class="form-group">
+                                <p>Package Information</p>
+                                <select class="form-control" id="packageSelect" name="package">
+                                    <option>Basic</option>
+                                    <option>Full</option>
+                                    <option>Complete</option>
+                                    <option>Custom</option>
+                                </select>
+                            </div>
+                        
+                            <div class="form-group">
+                                <textarea class="form-control" type="text" placeholder="<%= campground.additions %>" name="additions"></textarea>
+                            </div>
+                        
+                            <div class="form-group">
+                                <input class="form-control" type="number" value="<%= campground.price %>" placeholder="$4995" name="price" min="0.01" step="0.01"
+                                    max="25000">
+                            </div>
+                        
+                            <div class="form-group">
+                                <p>Contract</p>
+                                <input class="form-control" type="text" value="<%= campground.contract %>" placeholder="Link To Contract" name="wedContract">
+                            </div>
+                        
+                            <div class="form-group">
+                                <input class="form-control" type="text" value="<%= campground.image %>" name="image">
+                            </div>
+                        
+                        
+                            <p>About The Couple</p>
+                            <div class="form-group">
+                                <textarea class="form-control" type="textarea" value="<%= campground.description %>" placeholder="About The Couple" name="about"></textarea>
+                            </div>
+                        
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-primary btn-default btn-block">Submit</button>
+                            </div>
+                        </form>
 
-                <div class="form-group">
-                    <input class="form-control" type="text" value="<%= campground.image %>" name="campground[image]">
-                </div>
-
-                <div class="form-group">
-                    <input class="form-control" type="text" value="<%= campground.description %>" name="campground[description]">
-                </div>
-
-                <div class="form-group">
-                     <input class="form-control" type="number" value="<%= campground.price %>" name="campground[price]" min="0.01" step="0.01">
-                </div>
-
-                <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-default btn-block">Submit</button>
-                </div>
-            </form>
 
             <a href="/campgrounds">Go Back To Campgrounds</a>
 

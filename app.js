@@ -1,6 +1,8 @@
+require('dotenv').config()
+
 let express = require("express"),
   app = express(),
-  multer = require("multer"),
+  multer = require("multer"), //is a node. js middleware for handling multipart/form-data , which is primarily used for uploading files. It is written on top of busboy for maximum efficiency
   storage = multer.memoryStorage(), //!
   upload = multer({ storage: storage, limits: { fields: 1, fileSize: 6000000, files: 1, parts: 2 } }), //!
   photoRoute = express.Router(),

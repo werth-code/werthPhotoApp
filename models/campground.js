@@ -10,7 +10,10 @@ const campgroundSchema = new mongoose.Schema({
 
     date: String, 
     wedVenue: String,
+    
     weddingAddress: String,
+    lat: Number,
+    lng: Number,
 
     package: String,
     additions: String,
