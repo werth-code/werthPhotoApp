@@ -26,7 +26,7 @@ function seedDB() {
         if (err) {
             console.log(err);
         }
-        console.log("removed campgrounds!");
+        console.log("removed clients!");
         Comment.remove({}, function (err) {
             if (err) {
                 console.log(err);
@@ -38,7 +38,7 @@ function seedDB() {
                     if (err) {
                         console.log(err)
                     } else {
-                        console.log("added a campground");
+                        console.log("added a client");
                         //create a comment
                         Comment.create(
                             {

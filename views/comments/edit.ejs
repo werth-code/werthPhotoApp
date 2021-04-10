@@ -5,7 +5,7 @@
         <h1 style="text-align: center;">Edit Comment</h1>
         <div style="width: 30%; margin: 30px auto;">
 
-            <form action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+            <form action="/clients/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" value="<%= comment.text %>" name="comment[text]">
                 </div>
@@ -15,7 +15,7 @@
                 </div>
             </form>
 
-            <a href="/campgrounds">Go Back To Campgrounds</a>
+            <a href="/clients">Go Back To Campgrounds</a>
 
         </div>
     </div>

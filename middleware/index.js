@@ -10,7 +10,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
     Campground.findById(req.params.id, (err, foundCampground) => {
       if (err || !foundCampground) {
         req.flash("error", "Not Found!");
-        res.redirect("/campgrounds");
+        res.redirect("/clients");
 
       } else { 
         

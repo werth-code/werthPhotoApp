@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
   Campground.find({}, (err, allCampgrounds) => {
     if (err) console.log(err);
     else
-      res.render("campgrounds/index", {
+      res.render("clients/index", {
         campgrounds: allCampgrounds,
       });
   });
@@ -74,7 +74,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     if (err) console.log(err);
     else {
       console.log(newlyCreated)
-      res.redirect("/campgrounds");
+      res.redirect("/clients");
     }
   });
 });
@@ -82,7 +82,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
 //NEW - show form to create new camp
 
 router.get("/new", middleware.isLoggedIn, (req, res) => {
-  res.render("campgrounds/new");
+  res.render("clients/new");
 });
 
 //SHOW - id route to individual camp info - this url must be last
@@ -91,10 +91,10 @@ router.get("/new", middleware.isLoggedIn, (req, res) => {
 router.get("/:id", (req, res) => {
     Campground.findById(req.params.id).populate("comments").exec((err, foundCampground) => {
       if (err || !foundCampground) {
-        req.flash("error", "Campground Not Found!")
+        req.flash("error", "Not Found!")
         res.redirect("back")
       } else {
-        res.render("campgrounds/show", { campground: foundCampground });
+        res.render("clients/show", { campground: foundCampground });
       }
     });
 });
@@ -103,24 +103,24 @@ router.get("/:id", (req, res) => {
 //EDIT Camp Route
 router.get("/:id/edit", middleware.checkCampgroundOwnership, (req, res) => {
   Campground.findById(req.params.id, (err, foundCampground) => {
-      res.render("campgrounds/edit", { campground: foundCampground });
+      res.render("clients/edit", { campground: foundCampground });
     })
 })
 //UPDATE Camp Route
 
 router.put("/:id", middleware.checkCampgroundOwnership, ( req, res ) => {
   Campground.findByIdAndUpdate(req.params.id, req.body.campground, ( err, updatedCampground ) => {
-    if(err) res.redirect("/campgrounds")
-    else res.redirect("/campgrounds/" + req.params.id)
+    if(err) res.redirect("/clients")
+    else res.redirect("/clients/" + req.params.id)
   })
 })
 
 //DELETE ROUTE
 router.delete("/:id", middleware.checkCampgroundOwnership, ( req, res ) => {
   Campground.findByIdAndDelete(req.params.id, (err) => {
-    if(err) res.redirect("/campgrounds");
+    if(err) res.redirect("/clients");
   })
-  res.redirect("/campgrounds");
+  res.redirect("/clients");
 })
 
 //This also deletes comments
@@ -129,12 +129,12 @@ router.delete("/:id", async (req, res) => {
     try {
         let foundCampground = await Campground.findById(req.params.id);
         await foundCampground.remove();
-        res.redirect("/campgrounds");
+        res.redirect("/clients");
       } catch (error) {
         console.log(error.message);
         } 
       }
-    res.redirect("/campgrounds")
+    res.redirect("/clients")
 });
 
 
