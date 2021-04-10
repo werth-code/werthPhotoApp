@@ -24,7 +24,7 @@ let commentRoutes = require("./routes/comments"),
       indexRoutes = require("./routes/index")
       
 mongoose
-  .connect("mongodb://localhost:27017/werthPhoto", {
+  .connect("mongodb://localhost:27017/werthPhoto", { // this part 2:00 571
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -44,7 +44,7 @@ app.use("/photos", photoRoute) //
 
 //Passport Config
 app.use(require("express-session")({
-  secret: "peter piper picked a peck of pickled peppers",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
 }))
