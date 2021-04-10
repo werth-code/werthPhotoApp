@@ -43,7 +43,7 @@ app.use("/photos", photoRoute) //
 // seedDB() //Seed The Database
 
 //Passport Config
-app.use(require("express-session")({
+app.use(require("cookie-session")({ // double check this works!
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false
