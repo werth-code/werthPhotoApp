@@ -24,7 +24,7 @@ let commentRoutes = require("./routes/comments"),
       indexRoutes = require("./routes/index")
       
 mongoose
-  .connect("mongodb://localhost:27017/werthPhoto", {
+  .connect(process.env.DB_URL), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
