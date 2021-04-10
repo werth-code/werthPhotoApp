@@ -24,10 +24,10 @@ let commentRoutes = require("./routes/comments"),
       indexRoutes = require("./routes/index")
       
 mongoose
-  .connect(process.env.DB_URL), {
+  .connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useFindAndModify: false,
+    useFindAndModify: false
   })
   .then(() => console.log("Connected to DB!"))
   .catch((error) => console.log(error.message));
