@@ -35,7 +35,7 @@ router.post("/register", (req, res) => {
       }
       passport.authenticate("local")(req, res, () => {
         req.flash("success", "Welcome! " + user.username);
-        res.redirect("/campgrounds");
+        res.redirect("/clients");
       });
   });
 });
@@ -47,7 +47,7 @@ router.get("/login", (req, res) => {
 
 //Log In Logic
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/campgrounds",
+    successRedirect: "/clients",
     failureRedirect: "/login",
   }),
   (req, res) => {}
@@ -57,7 +57,7 @@ router.post("/login", passport.authenticate("local", {
 router.get("/logout", (req, res) => {
   req.logout();
   req.flash("success", "Logged Out!")
-  res.redirect("/campgrounds");
+  res.redirect("/clients");
 });
 
 module.exports = router;
